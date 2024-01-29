@@ -1,0 +1,65 @@
+/* Reset some default styles for better consistency across browsers */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  /* Set a background color for the body */
+  color: #333;
+  /* Set a default text color */
+}
+
+header {
+  background-color: #333;
+  /* Set a background color for the header */
+  color: #fff;
+  /* Set text color for the header */
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  /* Set link color in the navigation */
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+main {
+  max-width: 800px;
+  /* Adjust the maximum width of the main content */
+  margin: 20px auto;
+  /* Center the main content */
+  padding: 20px;
+  background-color: #fff;
+  /* Set a background color for the main content */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Add a subtle box shadow */
+}
+
+footer {
+  margin-top: 20px;
+  background-color: #333;
+  /* Set a background color for the footer */
+  color: #fff;
+  /* Set text color for the footer */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Additional styles can be added based on your design preferences */
