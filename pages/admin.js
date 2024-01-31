@@ -1,6 +1,32 @@
 
 import { update, getOne, getAll, create, remove } from "../server-request.js";
 
+// Function to show login form content
+export function showLoginFormContent(container) {
+  const loginFormHtml = `
+    <div class="login-container">
+      <h1>Login</h1>
+      <!-- Your login form HTML goes here -->
+    </div>
+  `;
+  container.html(loginFormHtml);
+}
+
+// Function to show home page content
+export function showHomePageContent(container) {
+  const homePageHtml = `
+    <div class="home-container">
+      <h1>Welcome to the Home Page</h1>
+      <button id="loginButton">Login</button>
+    </div>
+  `;
+  container.html(homePageHtml);
+
+  // Event listener for the login button
+  $('#loginButton').on('click', function () {
+    window.location.hash = 'login';
+  });
+} 
 export default async function admin() {
   if (await checkLogIn()) {
     window.location.href = "#login";
@@ -80,4 +106,11 @@ export async function deleteEvent(eventId) {
 async function checkLogIn() {
   const user = await getOne("admin", 1);
   return user.logIn === 0;
+}
+
+export async function viewAllBookings() {
+  const allBookings = await getAllBookings();
+  console.log(allBookings);
+  // Do something with the fetched bookings, e.g., display them in the UI
+  // You can modify this part based on your requirements
 }

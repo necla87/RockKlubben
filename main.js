@@ -1,20 +1,22 @@
+// main.js
+
 import admin from './pages/admin.js';
-import home from './pages/home.js';
-import booking from './pages/booking.js'; // Yeni ekledik
 
-async function router() {
-  // const events = await getEvents();
-
+// Function to handle page content based on the hash
+async function handlePageChange() {
   switch (location.hash) {
-  
-    case "#booking":
-      $('main').html(await booking(events)); // Etkinlikleri rezervasyon sayfasına gönderiyoruz
-      break;
     case "#admin":
       $('main').html(await admin());
       break;
-    case "#home":
+    // Add other cases for different pages as needed
     default:
       $('main').html(await home());
+      break;
   }
 }
+
+// Event listener for hash changes
+window.addEventListener("hashchange", handlePageChange);
+
+// Event listener for initial page load
+window.addEventListener("load", handlePageChange);
