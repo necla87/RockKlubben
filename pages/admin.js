@@ -1,4 +1,3 @@
-
 import { update, getOne, getAll, create, remove } from "../server-request.js";
 
 export default async function admin() {

@@ -4,13 +4,15 @@
       "id": "1",
       "date": "2024-02-01",
       "time": "19:00",
-      "price": 300,
+      "price": 100,
       "scene": "Rökrock",
       "description": "Lorem ipsum",
       "bookings": [
+        {
+          "name": "Gursel"
+        }
       ]
     },
-
     {
       "id": "2",
       "date": "2024-02-12",
@@ -18,10 +20,8 @@
       "price": 200,
       "scene": "Trenchcoat",
       "description": "Lorem ipsum",
-      "bookings": [
-      ]
+      "bookings": []
     },
-
     {
       "id": "3",
       "date": "2024-02-20",
@@ -29,8 +29,7 @@
       "price": 100,
       "scene": "Långrock",
       "description": "Lorem ipsum",
-      "bookings": [
-      ]
+      "bookings": []
     }
   ]
 }

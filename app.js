@@ -61,15 +61,15 @@ $(document).ready(function () {
 
     if (event && event.bookings.length < getMaxCapacity(event.scene)) {
       const name = prompt("Name:");
-      // const surname = prompt("Surname:");
-      // const email = prompt("Email:");
-      // const mobile = prompt("Mobile:");
+      const surname = prompt("Surname:");
+      const email = prompt("Email:");
+      const mobile = prompt("Mobile:");
 
-      if (name /* && surname && email && mobile */) {
-        const reservation = { name /* , surname, email, mobile */ };
+      if (name  && surname && email && mobile ) {
+        const reservation = { name , surname, email, mobile  };
         event.bookings.push(reservation);
-        // alert("Ticket reservation successful!");
-        // fetchData(); // Refresh data after reservation
+        alert("Ticket reservation successful!");
+        fetchData(); // Refresh data after reservation
         updateEvent(event);
       } else {
         alert("Please fill in all information!");
