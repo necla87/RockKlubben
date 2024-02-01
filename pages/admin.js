@@ -1,7 +1,18 @@
-
 import { update, getOne, getAll, create, remove } from "../server-request.js";
 
 // Function to show login form content
+
+$(document).ready(function() {
+  // Event listener for the login button
+  $("#login").on("click", function() {
+      if ($("#username").val() == "admin" && $("#password").val() == "12345") {
+          alert("You are a valid user");
+      } else {
+          alert("You are not a valid user");
+      }
+  });
+});
+
 export function showLoginFormContent(container) {
   const loginFormHtml = `
     <div class="login-container">

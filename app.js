@@ -68,8 +68,8 @@ $(document).ready(function () {
       if (name  && surname && email && mobile) {
         const reservation = { name  , surname, email, mobile  };
         event.bookings.push(reservation);
-        // alert("Ticket reservation successful!");
-        // fetchData(); // Refresh data after reservation
+        alert("Ticket reservation successful!");
+        fetchData(); // Refresh data after reservation
         updateEvent(event);
       } else {
         alert("Please fill in all information!");

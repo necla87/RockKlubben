@@ -39,6 +39,6 @@ export default function home() {
 // Etkinlik detaylarını gösteren fonksiyon
 function showEventDetails(index) {
   // Detayları göstermek için gerekli işlemleri yapabilirsiniz.
-  // Örneğin, seçilen etkinlik bilgilerini konsola yazdırabilirsiniz.
-  console.log("Selected Event:", eventsData[index]);
+ 
+  
 }

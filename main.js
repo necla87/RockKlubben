@@ -1,5 +1,4 @@
-// main.js
-
+import home from './pages/home.js';
 import admin from './pages/admin.js';
 
 // Function to handle page content based on the hash
@@ -14,7 +13,6 @@ async function handlePageChange() {
       break;
   }
 }
-
 // Event listener for hash changes
 window.addEventListener("hashchange", handlePageChange);
 
