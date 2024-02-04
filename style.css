@@ -41,13 +41,14 @@ nav a {
 }
 
 main {
-  max-width: 800px;
+  max-width: 300px;
   /* Adjust the maximum width of the main content */
   margin: 20px auto;
   /* Center the main content */
   padding: 20px;
-  background-color: #fff;
-  /* Set a background color for the main content */
+  background-color: rgba(255, 255, 255, 0.6);
+  /* Adjust the alpha value for more transparency */
+  /* Set a background color with transparency for the main content */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   /* Add a subtle box shadow */
 }
