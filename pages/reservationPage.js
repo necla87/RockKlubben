@@ -1,4 +1,5 @@
-// reservationPage.js
+import updateEventReservation from './startPage.js';
+
 export default async function reservationPage(eventId) {
   const reservationContainer = $("<div>");
 
