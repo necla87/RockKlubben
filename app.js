@@ -1,5 +1,6 @@
 $(document).ready(function () {
   const baseURL = "http://localhost:3000";
+  let events; // Define a variable to store events
 
   // Fetch data from json-server
   function fetchData() {
@@ -7,11 +8,13 @@ $(document).ready(function () {
       url: `${baseURL}/events`,
       dataType: 'json',
       success: function (json) {
-        displayEvents(json);
+        events = json; // Store events in the variable
+        displayEvents(events);
       }
     });
   }
 
+  // Function to update event data on the server
   function updateEvent(data) {
     $.ajax({
       type: "PUT",
@@ -24,23 +27,25 @@ $(document).ready(function () {
     });
   }
 
+  // Function to display events on the page
   function displayEvents(data) {
     $("#app").empty();
 
     data.forEach(function (event) {
       const eventHtml = `
-      <div class="event">
-        <h2>${event.title}</h2>
-        <p>${event.date} - ${event.time}</p>
-        <p>${event.description}</p>
-        <p>Price: ${event.price} SEK</p>
-        <p>Scene: ${event.scene}</p>
-        <button class="reserve-btn" data-id="${event.id}">Book Now</button>
-      </div>
-    `;
+        <div class="event">
+          <h2>${event.title}</h2>
+          <p>${event.date} - ${event.time}</p>
+          <p>${event.description}</p>
+          <p>Price: ${event.price} SEK</p>
+          <p>Scene: ${event.scene}</p>
+          <button class="reserve-btn" data-id="${event.id}">Book Now</button>
+        </div>
+      `;
       $("#app").append(eventHtml);
     });
 
+    // Attach click event for "Book Now" buttons
     $(".reserve-btn").on("click", function () {
       const eventId = $(this).data("id");
       console.log("Clicked Book Now for event ID:", eventId); // Add this log
@@ -48,50 +53,32 @@ $(document).ready(function () {
     });
   }
 
-
+  // Function to handle the reservation process
   function reserveTicket(eventId) {
-    const reservationForm = `
-    <div id="reservationForm">
-      <h2>Reservation Information</h2>
-      <form id="reservationForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="mobile">Mobile:</label>
-        <input type="tel" id="mobile" name="mobile" required>
-        <br>
-        <button type="button" id="submitReservation">Submit Reservation</button>
-      </form>
-    </div>
-  `;
+    const event = events.find(e => e.id === eventId);
 
-    $("#adminInfoContainer").html(reservationForm);
+    if (event && event.bookings.length < getMaxCapacity(event.scene)) {
+      // Check if reservation page is already loaded
+      const isReservationPageLoaded = $("#reservationForm").length > 0;
 
-    // Use event delegation to handle the click event
-    $("#adminInfoContainer").on("click", "#submitReservation", function () {
-      const name = $("#name").val();
-      const surname = $("#surname").val();
-      const email = $("#email").val();
-      const mobile = $("#mobile").val();
-
-      if (name && surname && email && mobile) {
-        const reservation = { name, surname, email, mobile };
-        updateEventReservation(eventId, reservation);
-        $("#reservationForm").remove(); // Remove the reservation form after submission
+      if (!isReservationPageLoaded) {
+        // Load reservation page
+        loadReservationPage(eventId);
       } else {
-        alert("Please fill in all information!");
+        alert('Reservation form is already open.');
       }
-    });
+    } else {
+      alert('Sorry, there are no more available tickets for this event!');
+    }
+  }
+
+  function loadReservationPage(eventId) {
+    // Load reservation page with the eventId
+    reservationPage(eventId);
   }
 
 
-
+  // Function to update event reservation on the server
   function updateEventReservation(eventId, reservation) {
     $.ajax({
       type: "POST",
@@ -105,5 +92,6 @@ $(document).ready(function () {
     });
   }
 
+  // Initial data fetch
   fetchData();
 });
