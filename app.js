@@ -53,45 +53,6 @@ $(document).ready(function () {
     });
   }
 
-  // Function to handle the reservation process
-  function reserveTicket(eventId) {
-    const event = events.find(e => e.id === eventId);
-
-    if (event && event.bookings.length < getMaxCapacity(event.scene)) {
-      // Check if reservation page is already loaded
-      const isReservationPageLoaded = $("#reservationForm").length > 0;
-
-      if (!isReservationPageLoaded) {
-        // Load reservation page
-        loadReservationPage(eventId);
-      } else {
-        alert('Reservation form is already open.');
-      }
-    } else {
-      alert('Sorry, there are no more available tickets for this event!');
-    }
-  }
-
-  function loadReservationPage(eventId) {
-    // Load reservation page with the eventId
-    reservationPage(eventId);
-  }
-
-
-  // Function to update event reservation on the server
-  function updateEventReservation(eventId, reservation) {
-    $.ajax({
-      type: "POST",
-      url: `${baseURL}/events/${eventId}/bookings`,
-      data: JSON.stringify(reservation),
-      contentType: 'application/json',
-      success: function () {
-        alert("Ticket reservation successful!");
-        fetchData(); // Refresh data after reservation
-      },
-    });
-  }
-
   // Initial data fetch
   fetchData();
 });
