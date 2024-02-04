@@ -73,7 +73,8 @@ $(document).ready(function () {
 
     $("#adminInfoContainer").html(reservationForm);
 
-    $("#submitReservation").on("click", function () {
+    // Use event delegation to handle the click event
+    $("#adminInfoContainer").on("click", "#submitReservation", function () {
       const name = $("#name").val();
       const surname = $("#surname").val();
       const email = $("#email").val();
@@ -88,6 +89,7 @@ $(document).ready(function () {
       }
     });
   }
+
 
 
   function updateEventReservation(eventId, reservation) {
