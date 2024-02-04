@@ -48,15 +48,15 @@ export default async function adminLoginPage() {
   });
 
   return `
-    <h1>Admin Login</h1>
-    <form id="adminLoginForm">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <button type="button" id="loginBtn">Login</button>
-    </form>
+    <div class="admin-login-container">
+      <h1>Admin Login</h1>
+      <form id="adminLoginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" id="loginBtn">Login</button>
+      </form>
+    </div>
   `;
 }

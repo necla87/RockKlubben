@@ -40,45 +40,25 @@ nav a {
   margin-right: 20px;
 }
 
-main {
-  max-width: 300px;
-  /* Adjust the maximum width of the main content */
-  margin: 20px auto;
-  /* Center the main content */
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.6);
-  /* Adjust the alpha value for more transparency */
-  /* Set a background color with transparency for the main content */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Add a subtle box shadow */
-}
-
-footer {
-  margin-top: 20px;
-  background-color: #333;
-  /* Set a background color for the footer */
-  color: #fff;
-  /* Set text color for the footer */
-  padding: 10px;
-  text-align: center;
-}
-
-/* Additional styles can be added based on your design preferences */
-
-
-/* style.css */
-
 .event-container {
-  border: 1px solid #ddd;
-  margin: 10px;
+  border: 1px solid #dddddd3e;
+  margin : 10px auto;
+  /* Set auto margin to center horizontally */
   padding: 10px;
+  min-height: 250px;
+  
+  /* Set the minimum height for event containers */
 }
 
 .event {
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.568);
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
+  display: inline-block;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+  margin-right: 10px;
 }
 
 .event h2 {
@@ -100,12 +80,132 @@ footer {
 .event button:hover {
   background-color: #45a049;
 }
+
 body {
-  background-image:url('img.webp');
+  background-image: url('img.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* Optional: Fixed background */
+ 
 }
-/* Additional styles can be added based on your design preferences */
+/* Add these styles to your CSS file */
+
+/* style.css */
+
+/* ... (previous styles) */
+
+.admin-login-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#adminLoginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+footer {
+  margin-top: 220px;
+  background-color: #333;
+  /* Set a background color for the footer */
+  color: #fff;
+  /* Set text color for the footer */
+  padding: 10px;
+  text-align: center;
+}
+
+
+#admin {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+#adminButtons {
+  width: 200px;
+  /* Adjust the width as needed */
+}
+
+#adminButtons button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#adminButtons button:hover {
+  background-color: #45a049;
+}
+
+#adminInfoContainer {
+  flex-grow: 1;
+  padding-left: 20px;
+  /* Adjust the left padding as needed */
+}
+
+#adminInfoContainer h2 {
+  color: #333;
+}
+
+#reservationForm {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+#reservationForm h2 {
+  margin-bottom: 10px;
+}
+
+#reservationForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#reservationForm input {
+  margin-bottom: 10px;
+}
+
+#submitReservation {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#submitReservation:hover {
+  background-color: #45a049;
+}

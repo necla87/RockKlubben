@@ -1,43 +1,32 @@
 import { update, getAll, create, remove } from "../server-request.js";
-import { addLogoutEventListener } from "./adminLoginPage.js";
 
 export default async function adminPage() {
   return `
     <div id="admin">
-      <h1>Admin sida</h1>
-
-      <div id="adminLogIn">
-        <button id="adminViewBookings">Tüm Rezervasyonları Görüntüle</button>
-        <br>
-
-        <button id="adminCreateEvent">Yeni Etkinlik Oluştur</button>
-        <br>
-
-        <button id="adminEditEvent">Etkinliği Düzenle</button>
-        <br>
-
-        <button id="adminDeleteEvent">Etkinliği Sil</button>
-        <br>
-
-        <button id="handleLogout">Logga ut</button>
-        <br>
+      <div id="adminButtons">
+        <button id="adminViewBookings">View All Bookings</button>
+        <button id="adminCreateEvent">Create New Event</button>
+        <button id="adminEditEvent">Edit Event</button>
+        <button id="adminDeleteEvent">Delete Event</button>
+        <button id="handleLogout">Logout</button>
       </div>
+      <div id="adminInfoContainer"></div>
 
       <script>
         $("#adminViewBookings").on("click", function () {
-          window.location.href = "#allBookings";
+          displayInfo("View All Bookings");
         });
 
         $("#adminCreateEvent").on("click", function () {
-          window.location.href = "#createEvent";
+          displayInfo("Create New Event");
         });
 
         $("#adminEditEvent").on("click", function () {
-          window.location.href = "#editEvent";
+          displayInfo("Edit Event");
         });
 
         $("#adminDeleteEvent").on("click", function () {
-          window.location.href = "#deleteEvent";
+          displayInfo("Delete Event");
         });
 
         // Add event listener for logout
@@ -45,10 +34,18 @@ export default async function adminPage() {
           await handleLogout();
           window.location.href = "#start"; // Change to the appropriate anchor link for the home page
         });
+
+        function displayInfo(title) {
+          // Update the container with the selected title and add some styling
+          $("#adminInfoContainer").html('<div style="padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd;"><h2>' + title + '</h2></div>');
+        }
       </script>
     </div>
   `;
 }
+
+// The rest of your functions remain unchanged...
+
 
 export async function getAllBookings() {
   const allEvents = await getAll("events");

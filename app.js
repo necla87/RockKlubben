@@ -29,36 +29,66 @@ $(document).ready(function () {
 
     data.forEach(function (event) {
       const eventHtml = `
-        <div class="event">
-          <h2>${event.date} - ${event.scene}</h2>
-          <p>${event.description}</p>
-          <p>Time: ${event.time}</p>
-          <p>Price: ${event.price} SEK</p>
-          <button class="reserve-btn" data-id="${event.id}">Reserve Tickets</button>
-        </div>
-      `;
+      <div class="event">
+        <h2>${event.title}</h2>
+        <p>${event.date} - ${event.time}</p>
+        <p>${event.description}</p>
+        <p>Price: ${event.price} SEK</p>
+        <p>Scene: ${event.scene}</p>
+        <button class="reserve-btn" data-id="${event.id}">Book Now</button>
+      </div>
+    `;
       $("#app").append(eventHtml);
     });
 
     $(".reserve-btn").on("click", function () {
       const eventId = $(this).data("id");
+      console.log("Clicked Book Now for event ID:", eventId); // Add this log
       reserveTicket(eventId);
     });
   }
 
-  function reserveTicket(eventId) {
-    const name = prompt("Name:");
-    const surname = prompt("Surname:");
-    const email = prompt("Email:");
-    const mobile = prompt("Mobile:");
 
-    if (name && surname && email && mobile) {
-      const reservation = { name, surname, email, mobile };
-      updateEventReservation(eventId, reservation);
-    } else {
-      alert("Please fill in all information!");
-    }
+  function reserveTicket(eventId) {
+    const reservationForm = `
+    <div id="reservationForm">
+      <h2>Reservation Information</h2>
+      <form id="reservationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" required>
+        <br>
+        <button type="button" id="submitReservation">Submit Reservation</button>
+      </form>
+    </div>
+  `;
+
+    $("#adminInfoContainer").html(reservationForm);
+
+    $("#submitReservation").on("click", function () {
+      const name = $("#name").val();
+      const surname = $("#surname").val();
+      const email = $("#email").val();
+      const mobile = $("#mobile").val();
+
+      if (name && surname && email && mobile) {
+        const reservation = { name, surname, email, mobile };
+        updateEventReservation(eventId, reservation);
+        $("#reservationForm").remove(); // Remove the reservation form after submission
+      } else {
+        alert("Please fill in all information!");
+      }
+    });
   }
+
 
   function updateEventReservation(eventId, reservation) {
     $.ajax({
