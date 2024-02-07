@@ -42,5 +42,8 @@ export default async function reservationPage(eventId) {
     } else {
       alert("Please fill in all information!");
     }
+    
   });
 }
+
+

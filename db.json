@@ -2,13 +2,13 @@
   "events": [
     {
       "id": "1",
-      "date": "2024-03-15",
-      "time": "20:00",
-      "price": 150,
+      "date": "2024-02-01",
+      "time": "19:00",
+      "price": 100,
       "scene": "Rökrock",
-      "description": "En kväll fylld med häftig rockmusik och energi. Max 250 personer är välkomna!",
-      "title": "Rock Explosion Night",
-      "bookings": []
+      "description": "Lorem ipsum",
+      "bookings":   []
+      
     },
     {
       "id": "2",
