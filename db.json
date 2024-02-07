@@ -5,6 +5,7 @@
       "date": "2024-02-01",
       "time": "19:00",
       "price": 100,
+      "price": 100,
       "scene": "Rökrock",
       "description": "Lorem ipsum",
       "bookings":   []
