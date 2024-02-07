@@ -1,4 +1,3 @@
-// startPage.js
 import reservationPage from './reservationPage.js';
 
 export default async function home() {
@@ -7,6 +6,9 @@ export default async function home() {
   try {
     // Fetch events data from json-server
     const response = await fetch('http://localhost:3000/events');
+    if (!response.ok) {
+      throw new Error('Failed to fetch events');
+    }
     const data = await response.json();
     const eventsData = data || [];
 
@@ -23,14 +25,14 @@ export default async function home() {
         </div>
       `);
 
-      // Add event listener for the book button
-      eventElement.find(".reserve-btn").on("click", function () {
-        const eventId = $(this).data("id");
-        console.log("Clicked Book Now for event ID:", eventId);
-        reservationPage(eventId); // Navigate to reservation page
-      });
-
       eventsContainer.append(eventElement);
+    });
+
+    // Add event listener for the book button using event delegation
+    eventsContainer.on("click", ".reserve-btn", function () {
+      const eventId = $(this).data("id");
+      console.log("Clicked Book Now for event ID:", eventId);
+      reservationPage(eventId); // Navigate to reservation page
     });
   } catch (error) {
     console.error('Error reading events data:', error);
