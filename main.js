@@ -1,4 +1,3 @@
-// main.js
 import startPage from './pages/startPage.js';
 import adminLoginPage from './pages/adminLoginPage.js';
 import adminPage from './pages/adminPage.js';
@@ -17,7 +16,11 @@ async function handlePageChange() {
       const eventId = extractEventIdFromUrl(); // Implement this function
       $('main').html(await reservationPage(eventId));
       break;
-    // Default to the main page
+    // For the main/start page
+    // case "":
+    //   $('main').html(await startPage());
+    //   break;
+    // Default to the main/start page for other cases
     default:
       $('main').html(await startPage());
       break;
