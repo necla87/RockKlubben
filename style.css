@@ -178,34 +178,62 @@ footer {
 #adminInfoContainer h2 {
   color: #333;
 }
-
-#reservationForm {
-  padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
+.reservation-form {
+  margin-top: 10px;
 }
 
-#reservationForm h2 {
-  margin-bottom: 10px;
-}
-
-#reservationForm label {
+label {
   display: block;
   margin-bottom: 5px;
 }
 
-#reservationForm input {
+input {
+  width: 100%;
+  padding: 8px;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
-#submitReservation {
+button.reserve-btn {
   background-color: #4caf50;
   color: white;
+  padding: 10px;
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
+  width: 100%;
 }
 
-#submitReservation:hover {
+button.reserve-btn:hover {
+  background-color: #45a049;
+}
+
+.reservation-form {
+  margin-top: 10px;
+}
+
+.reservation-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  /* Text color for labels */
+}
+
+.reservation-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.reservation-form button.reserve-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.reservation-form button.reserve-btn:hover {
   background-color: #45a049;
 }

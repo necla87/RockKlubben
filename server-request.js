@@ -1,4 +1,3 @@
-
 const database = {
   admin: [
     { id: 1, logIn: 1 },
