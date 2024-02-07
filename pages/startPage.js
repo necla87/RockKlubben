@@ -1,6 +1,7 @@
 // startPage.js
 import reservationPage from './reservationPage.js';
 
+
 export default async function home() {
   const eventsContainer = $("<div>");
 

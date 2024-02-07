@@ -1,4 +1,4 @@
-import updateEventReservation from './startPage.js';
+// import updateEventReservation from './startPage.js';
 
 export default async function reservationPage(eventId) {
   const reservationContainer = $("<div>");
@@ -35,13 +35,31 @@ export default async function reservationPage(eventId) {
     const mobile = $("#mobile").val();
 
     if (name && surname && email && mobile) {
-      const reservation = { name, surname, email, mobile };
-      updateEventReservation(eventId, reservation);
+      const reservation = { eventId, name, surname, email, mobile };
+      // updateReservation(eventId, reservation);
+      updateReservation(reservation, eventId);
       $("#reservationForm").remove(); // Remove the reservation form after submission
       alert("Ticket reservation successful!");
     } else {
       alert("Please fill in all information!");
     }
-    
+
   });
+
 }
+
+function updateReservation(reservation,) {
+  fetch(`http://localhost:3000/bookings`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      reservation
+    )
+  }).then(response => response.json())
+    .then(console.log(newPerson))
+}
+
+
+
