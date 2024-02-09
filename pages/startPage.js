@@ -1,5 +1,6 @@
 import { create } from "../server-request";
 
+
 export default async function home() {
   const eventsContainer = $("<div>");
 
