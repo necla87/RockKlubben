@@ -1,11 +1,11 @@
 import { update, getAll, create, remove } from "../server-request.js";
 
-
-
-
 export default function adminPage() {
   const adminPage = `
-    <div id="admin">
+export default function adminPage() {
+  return `
+
+  <div id="admin">
       <div id="adminButtons">
         <button style="border-radius: 8px; " id="adminViewBookings">View All Bookings</button>
         <button style="border-radius: 8px; " id="adminCreateEvent">Create New Event</button>
@@ -41,7 +41,11 @@ export default function adminPage() {
 
         function displayInfo(title) {
           // Update the container with the selected title and add some styling
+
           $("#adminInfoContainer").html('<div id="display-parent" style="padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd;"><h2>' + title + '</h2></div>');
+
+          $("#adminInfoContainer").html('<div style="padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd;"><h2>' + title + '</h2>${getAllBookings()}</div>');
+
         }
 
       </script>
@@ -64,6 +68,7 @@ export async function getAllBookings() {
   data.forEach((booking) => {
     const bookingElement = $(`<div class="booking">
       <h2>${booking.name}< /h2>
+      <h2>${booking.name}</h2>
       <p>${booking.surname}</p>
       <p>${booking.email}</p>
       <p>${booking.mobile}</p>
@@ -73,6 +78,7 @@ export async function getAllBookings() {
   })
 
   $('#display-parent').append(bookingsContainer);
+  return bookingsContainer;
 }
 
 export async function createEvent(newEvent) {

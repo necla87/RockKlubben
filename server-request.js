@@ -9,12 +9,16 @@ const database = {
 };
 
 export async function getAll(collection) {
-  // Simüle edilen asenkron işlem için setTimeout kullanıyoruz.
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(database[collection]);
-    }, 500);
-  });
+
+  try {
+    // Fetch events data from json-server
+    const response = await fetch(`http://localhost:3000/${collection}`);
+    const data = await response.json();
+  } catch (error) {
+    console.error('Error reading events data:', error);
+  }
+
+  return data;
 }
 
 export async function getOne(collection, id) {

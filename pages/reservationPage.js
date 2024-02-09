@@ -60,3 +60,8 @@ function updateReservation(reservation,) {
   }).then(response => response.json())
     .then(console.log(newPerson))
 }
+
+}
+
+
+

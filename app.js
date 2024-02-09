@@ -16,15 +16,16 @@ $(document).ready(function () {
 
   // Function to update event data on the server
   function updateEvent(data) {
-    $.ajax({
-      type: "PUT",
-      url: `${baseURL}/events/${data.id}`,
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      success: function () {
-        alert('Saved successfully');
-      },
-    });
+    // $.ajax({
+    //   type: "PUT",
+    //   url: `${baseURL}/events/${data.id}`,
+    //   data: JSON.stringify(data),
+    //   contentType: 'application/json',
+    //   success: function () {
+    //     alert('Saved successfully');
+    //   },
+    // });
+
   }
 
   // Function to display events on the page
@@ -53,6 +54,8 @@ $(document).ready(function () {
     });
   }
 
+
   // Initial data fetch
   fetchData();
 });
+
