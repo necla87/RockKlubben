@@ -2,34 +2,59 @@
   "events": [
     {
       "id": "1",
-      "date": "2024-02-01",
-      "time": "19:00",
-      "price": 100,
+      "date": "2024-03-15",
+      "time": "20:00",
+      "price": 150,
       "scene": "Rökrock",
-      "description": "Lorem ipsum",
-      "bookings": [
-        {
-          "name": "Gursel"
-        }
-      ]
+      "description": "En kväll fylld med häftig rockmusik och energi. Max 250 personer är välkomna!",
+      "title": "Rock Explosion Night",
+      "bookings": []
     },
     {
       "id": "2",
-      "date": "2024-02-12",
-      "time": "19:00",
+      "date": "2024-04-10",
+      "time": "19:30",
       "price": 200,
       "scene": "Trenchcoat",
-      "description": "Lorem ipsum",
+      "description": "En elegant kväll med rock och stil. Biljetter tillgängliga för de första 500 personerna!",
+      "title": "Elegance Rock Showcase",
       "bookings": []
     },
     {
-      "id": "3",
-      "date": "2024-02-20",
-      "time": "19:00",
-      "price": 100,
-      "scene": "Långrock",
-      "description": "Lorem ipsum",
+      "id": "1",
+      "date": "2024-03-15",
+      "time": "20:00",
+      "price": 150,
+      "scene": "Rökrock",
+      "description": "En kväll fylld med häftig rockmusik och energi. Max 250 personer är välkomna!",
+      "title": "Rock Explosion Night",
       "bookings": []
+    }
+  ],
+  "bookings": [
+    {
+      "eventId": 1,
+      "name": "Kübra",
+      "surname": "Ercin",
+      "email": "kubercin@gmail.com",
+      "mobile": "0760772660",
+      "id": 1
+    },
+    {
+      "eventId": 2,
+      "name": "Kübra",
+      "surname": "Ercin",
+      "email": "kubercin@gmail.com",
+      "mobile": "0760772660",
+      "id": 2
+    },
+    {
+      "eventId": 1,
+      "name": "Kübra",
+      "surname": "Ercin",
+      "email": "kubercin@gmail.com",
+      "mobile": "0760772660",
+      "id": 3
     }
   ]
 }

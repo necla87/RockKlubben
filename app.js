@@ -1,56 +1,55 @@
 $(document).ready(function () {
   const baseURL = "http://localhost:3000";
-
-  // Dummy data for events
-  const events = [
-    { id: 1, date: "2024-02-01", time: "19:00", price: 100, scene: "Rökrock", description: "Lorem ipsum", bookings: [] },
-    // Add more events as needed
-  ];
+  let events; // Define a variable to store events
 
   // Fetch data from json-server
   function fetchData() {
     $.ajax({
-      url: `${baseURL}/events`, // Assuming events are stored at the /events endpoint
+      url: `${baseURL}/events`,
       dataType: 'json',
       success: function (json) {
-        console.log(json);
-        displayEvents(json);
+        events = json; // Store events in the variable
+        displayEvents(events);
       }
     });
   }
 
+  // Function to update event data on the server
   function updateEvent(data) {
-    $.ajax({
-      type: "PUT", // Assuming you are updating an existing event, change it to "POST" if needed
-      url: `${baseURL}/events/${data.id}`, // Adjust the URL based on your API structure
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      success: function () {
-        alert('Saved successfully');
-      },
-    });
+    // $.ajax({
+    //   type: "PUT",
+    //   url: `${baseURL}/events/${data.id}`,
+    //   data: JSON.stringify(data),
+    //   contentType: 'application/json',
+    //   success: function () {
+    //     alert('Saved successfully');
+    //   },
+    // });
+
   }
 
-  // Display events on the page
+  // Function to display events on the page
   function displayEvents(data) {
     $("#app").empty();
 
     data.forEach(function (event) {
       const eventHtml = `
-                <div class="event">
-                    <h2>${event.date} - ${event.scene}</h2>
-                    <p>${event.description}</p>
-                    <p>Time: ${event.time}</p>
-                    <p>Price: ${event.price} SEK</p>
-                    <button class="reserve-btn" data-id="${event.id}">Reserve Tickets</button>
-                </div>
-            `;
+        <div class="event">
+          <h2>${event.title}</h2>
+          <p>${event.date} - ${event.time}</p>
+          <p>${event.description}</p>
+          <p>Price: ${event.price} SEK</p>
+          <p>Scene: ${event.scene}</p>
+          <button class="reserve-btn" data-id="${event.id}">Book Now</button>
+        </div>
+      `;
       $("#app").append(eventHtml);
     });
 
-    // Add event listener for reserve button
+    // Attach click event for "Book Now" buttons
     $(".reserve-btn").on("click", function () {
       const eventId = $(this).data("id");
+      console.log("Clicked Book Now for event ID:", eventId); // Add this log
       reserveTicket(eventId);
     });
   }
@@ -96,3 +95,4 @@ $(document).ready(function () {
   // Fetch initial data
   fetchData();
 });
+
