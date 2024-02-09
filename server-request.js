@@ -12,6 +12,7 @@ const database = {
 export async function getAll(collection) {
 
   try {
+    console.log({ collection })
     // Fetch events data from json-server
     const response = await fetch(`http://localhost:3000/${collection}`);
     const data = await response.json();
@@ -33,13 +34,12 @@ export async function getOne(collection, id) {
 }
 
 export async function create(collection, data) {
-  // Simüle edilen asenkron işlem için setTimeout kullanıyoruz.
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const newItem = { id: database[collection].length + 1, ...data };
-      database[collection].push(newItem);
-      resolve(newItem);
-    }, 500);
+  const response = await fetch(`http://localhost:3000/${collection}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   });
 }
 
