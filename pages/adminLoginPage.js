@@ -7,10 +7,8 @@ export async function login(username, password) {
   return new Promise((resolve) => {
     setTimeout(() => {
       if ((username === 'admin' && password === 'admin12345') || (username === storedCredentials.username && password === storedCredentials.password)) {
-        // Successful login
         resolve(true);
       } else {
-        // Invalid credentials
         resolve(false);
       }
     }, 500); // Simulating a delay for authentication (you can remove this in a real scenario)
@@ -25,16 +23,12 @@ export function addLogoutEventListener() {
 }
 
 export default async function adminLoginPage() {
-  // Implement logic for admin login page
 
   $(document).ready(function () {
-    // Event listener for the login button
     $("#loginBtn").on("click", async function () {
-      // Get username and password values from input fields
       const username = $("#username").val();
       const password = $("#password").val();
 
-      // Call the login function with username and password
       const loggedIn = await login(username, password);
 
       if (loggedIn) {
