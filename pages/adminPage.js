@@ -1,8 +1,11 @@
 import { update, getAll, create, remove } from "../server-request.js";
 
 export default function adminPage() {
+  const adminPage = `
+export default function adminPage() {
   return `
-    <div id="admin">
+
+  <div id="admin">
       <div id="adminButtons">
         <button style="border-radius: 8px; " id="adminViewBookings">View All Bookings</button>
         <button style="border-radius: 8px; " id="adminCreateEvent">Create New Event</button>
@@ -19,6 +22,7 @@ export default function adminPage() {
 
         $("#adminCreateEvent").on("click", function () {
           displayInfo("Create New Event");
+          ${displayCreateEvent()}
         });
 
         $("#adminEditEvent").on("click", function () {
@@ -37,14 +41,22 @@ export default function adminPage() {
 
         function displayInfo(title) {
           // Update the container with the selected title and add some styling
+
+          $("#adminInfoContainer").html('<div id="display-parent" style="padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd;"><h2>' + title + '</h2></div>');
+
           $("#adminInfoContainer").html('<div style="padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd;"><h2>' + title + '</h2>${getAllBookings()}</div>');
+
         }
+
       </script>
     </div>
-  `;
+`;
+
+  return adminPage;
+
 }
 
-// The rest of your functions remain unchanged...
+
 
 
 export async function getAllBookings() {
@@ -55,6 +67,7 @@ export async function getAllBookings() {
 
   data.forEach((booking) => {
     const bookingElement = $(`<div class="booking">
+      <h2>${booking.name}< /h2>
       <h2>${booking.name}</h2>
       <p>${booking.surname}</p>
       <p>${booking.email}</p>
@@ -64,6 +77,7 @@ export async function getAllBookings() {
     bookingsContainer.append(bookingElement)
   })
 
+  $('#display-parent').append(bookingsContainer);
   return bookingsContainer;
 }
 
@@ -84,4 +98,61 @@ export async function viewAllBookings() {
   console.log(allBookings);
   // Do something with the fetched bookings, e.g., display them in the UI
   // You can modify this part based on your requirements
+}
+
+function displayCreateEvent() {
+
+  const displayParent = $("#display-parent");
+  console.log('displayed here')
+
+  const createEventForm = `
+    <div id="createEventForm">
+      <h2>Create New Event</h2>
+      <form id="createEventForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <br>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+        <br>
+        <label for="scene">Scene:</label>
+        <input type="text" id="scene" name="scene" required>
+        <br>
+        <button type="button" id="submitEvent">Create Event</button>
+      </form>
+    </div>
+  `;
+
+  // displayParent.append(createEventForm);
+
+  // insert the form intto the displayParent
+  displayParent.append(createEventForm);
+
+  // ad event listener for the submit button and first check if the form is valid then make a request to the server
+  $("#submitEvent").on("click", function () {
+    const title = $("#title").val();
+    const date = $("#date").val();
+    const time = $("#time").val();
+    const description = $("#description").val();
+    const price = $("#price").val();
+    const scene = $("#scene").val();
+
+    if (title && date && time && description && price && scene) {
+      const newEvent = { title, date, time, description, price, scene };
+      createEvent(events, newEvent);
+      $("#createEventForm").remove(); // Remove the form after submission
+      alert("Event created successfully!");
+    } else {
+      alert("Please fill in all information!");
+    }
+  })
 }

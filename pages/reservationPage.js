@@ -61,5 +61,7 @@ function updateReservation(reservation,) {
     .then(console.log(newPerson))
 }
 
+}
+
 
 
