@@ -1,48 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <title>RockKlubben!</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="" />
-    
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="app.js"></script>
-    <script type="module" src="main.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <title>RockKlubben!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
 
-  </head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <a href="">Startsida</a>
+      <a href="#login">Admin Login</a>
+    </nav>
+  </header>
+  <div>
+    <main id="app"></main>
+  </div>
+  <footer>
+    <small>©
+      <script>document.write(new Date().getFullYear());</script>
+      <span id="companyName">RockKlubben</span>. All Rights Reserved.
+    </small>
+  </footer>
+</body>
 
-  <body>
-    <header>
-      <nav class="main-nav">
-        <a href="">Rockklubben Ytterrock</a>
-        <a href="#admin">Login</a>
-  
-      </nav>
-    </header>
-    <div>
-      <main id="app"></main>
-    </div>
-  </body>
-  
-  </html>
-
-
-    <footer>
-      <small
-        >©
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        <span id="companyName">RockKlubben</span>. All Rights
-        Reserved.</small
-      >
-    </footer>
-  </body>
 </html>

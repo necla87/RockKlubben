@@ -1,20 +1,27 @@
-import home from './pages/home.js';
-import admin from './pages/admin.js';
+// main.js
+import startPage from './pages/startPage.js';
+import adminLoginPage from './pages/adminLoginPage.js';
+import adminPage from './pages/adminPage.js';
 
-// Function to handle page content based on the hash
 async function handlePageChange() {
   switch (location.hash) {
-    case "#admin":
-      $('main').html(await admin());
+    case "#login":
+      $('main').html(await adminLoginPage());
       break;
-    // Add other cases for different pages as needed
+    case "#admin":
+      $('main').html(await adminPage());
+      break;
+    // Default to the main page
     default:
-      $('main').html(await home());
+      $('main').html(await startPage());
       break;
   }
 }
-// Event listener for hash changes
-window.addEventListener("hashchange", handlePageChange);
 
-// Event listener for initial page load
+function extractEventIdFromUrl() {
+  // Implement the logic to extract eventId from the URL
+  // You can use location.hash or any other method based on your URL structure
+}
+
+window.addEventListener("hashchange", handlePageChange);
 window.addEventListener("load", handlePageChange);
