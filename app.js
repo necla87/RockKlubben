@@ -2,9 +2,8 @@ import reservationPage from "./pages/reservationPage";
 
 $(document).ready(function () {
   const baseURL = "http://localhost:3000";
-  let events; // Define a variable to store events
+  let events;
 
-  // Fetch data from json-server
   function fetchData() {
     $.ajax({
       url: `${baseURL}/events`,
@@ -16,21 +15,7 @@ $(document).ready(function () {
     });
   }
 
-  // Function to update event data on the server
-  function updateEvent(data) {
-    // $.ajax({
-    //   type: "PUT",
-    //   url: `${baseURL}/events/${data.id}`,
-    //   data: JSON.stringify(data),
-    //   contentType: 'application/json',
-    //   success: function () {
-    //     alert('Saved successfully');
-    //   },
-    // });
 
-  }
-
-  // Function to display events on the page
   function displayEvents(data) {
     $("#app").empty();
 
@@ -48,17 +33,13 @@ $(document).ready(function () {
       $("#app").append(eventHtml);
     });
 
-    // Attach click event for "Book Now" buttons
     $(".reserve-btn").on("click", function () {
       const eventId = $(this).data("id");
       console.log("Clicked Book Now for event ID:", eventId); // Add this log
-      // reserveTicket(eventId);
       reservationPage(eventId);
     });
   }
 
-
-  // Initial data fetch
   fetchData();
 });
 

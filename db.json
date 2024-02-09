@@ -21,7 +21,7 @@
       "bookings": []
     },
     {
-      "id": "1",
+      "id": "3",
       "date": "2024-03-15",
       "time": "20:00",
       "price": 150,
@@ -31,30 +31,5 @@
       "bookings": []
     }
   ],
-  "bookings": [
-    {
-      "eventId": 1,
-      "name": "Kübra",
-      "surname": "Ercin",
-      "email": "kubercin@gmail.com",
-      "mobile": "0760772660",
-      "id": 1
-    },
-    {
-      "eventId": 2,
-      "name": "Kübra",
-      "surname": "Ercin",
-      "email": "kubercin@gmail.com",
-      "mobile": "0760772660",
-      "id": 2
-    },
-    {
-      "eventId": 1,
-      "name": "Kübra",
-      "surname": "Ercin",
-      "email": "kubercin@gmail.com",
-      "mobile": "0760772660",
-      "id": 3
-    }
-  ]
+  "bookings": []
 }
